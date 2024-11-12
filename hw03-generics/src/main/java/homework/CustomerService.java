@@ -9,10 +9,8 @@ public class CustomerService {
 
     public Entry<Customer, String> getSmallest() {
         var smallestEntry = customers.firstEntry();
-
         return getCustomerStringEntry(smallestEntry);
     }
-
 
     public Entry<Customer, String> getNext(Customer customer) {
         var customerStringEntry = customers.higherEntry(customer);
