@@ -5,17 +5,19 @@ import java.util.Map.Entry;
 
 public class CustomerService {
 
-    private final TreeMap<Customer, String> customers = new TreeMap<>();
+    private final TreeMap<Customer, String> customers = new TreeMap<>(Comparator.comparingLong(Customer::getScores));
 
     public Entry<Customer, String> getSmallest() {
-        return customers.entrySet().stream()
-                .min(Entry.comparingByKey())
-                .map(entry -> new AbstractMap.SimpleEntry<>(new Customer(entry.getKey()), entry.getValue()))
-                .orElse(null);
+        var smallestEntry = customers.firstEntry();
+
+        return smallestEntry != null
+                ? new AbstractMap.SimpleEntry<>(new Customer(smallestEntry.getKey()), smallestEntry.getValue())
+                : null;
     }
 
+
     public Entry<Customer, String> getNext(Customer customer) {
-        Entry<Customer, String> customerStringEntry = customers.higherEntry(customer);
+        var customerStringEntry = customers.higherEntry(customer);
         return customerStringEntry != null
                 ? new AbstractMap.SimpleEntry<>(new Customer(customerStringEntry.getKey()), customerStringEntry.getValue())
                 : null;
