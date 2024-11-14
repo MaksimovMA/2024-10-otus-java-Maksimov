@@ -1,5 +1,6 @@
 rootProject.name = "2024-10-otus-java-Maksimov"
 include("hw01-gradle")
+include("hw03-generics")
 
 
 pluginManagement {
