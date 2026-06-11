@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мы вместе ❤️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(-45deg, #1a0b2e, #4a1942, #7b2d5e, #2d132c);
+    background-size: 400% 400%;
+    animation: gradientShift 18s ease infinite;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  @keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    max-width: 900px;
+    width: 100%;
+  }
+
+  .title {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    color: #ffd6e8;
+    text-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    font-weight: 300;
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 3rem;
+  }
+
+  .heart {
+    font-size: clamp(3rem, 10vw, 5rem);
+    display: inline-block;
+    animation: heartbeat 1.2s ease-in-out infinite;
+    filter: drop-shadow(0 0 25px rgba(255, 60, 120, 0.8));
+    margin-bottom: 2.5rem;
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    10%      { transform: scale(1.15); }
+    20%      { transform: scale(1); }
+    30%      { transform: scale(1.12); }
+    40%      { transform: scale(1); }
+  }
+
+  .timer {
+    display: flex;
+    justify-content: center;
+    gap: clamp(0.6rem, 2.5vw, 1.5rem);
+    flex-wrap: wrap;
+  }
+
+  .timer-block {
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: clamp(1rem, 3vw, 1.8rem) clamp(0.8rem, 3vw, 1.6rem);
+    min-width: clamp(85px, 20vw, 140px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .timer-block:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(255, 105, 180, 0.25);
+  }
+
+  .timer-value {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 600;
+    background: linear-gradient(180deg, #fff, #ffb3d1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+  }
+
+  .timer-label {
+    margin-top: 0.5rem;
+    font-size: clamp(0.65rem, 1.8vw, 0.85rem);
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .since {
+    margin-top: 3rem;
+    font-weight: 300;
+    font-size: clamp(0.85rem, 2.2vw, 1.05rem);
+    color: rgba(255, 255, 255, 0.55);
+    letter-spacing: 2px;
+  }
+
+  .since span {
+    color: #ffd6e8;
+    font-weight: 400;
+  }
+
+  /* Falling hearts */
+  .floating-heart {
+    position: fixed;
+    top: -5vh;
+    z-index: 1;
+    user-select: none;
+    pointer-events: none;
+    animation: fall linear forwards;
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 0;
+    }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.6; }
+    100% {
+      transform: translateY(110vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  /* Twinkling stars */
+  .star {
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 0;
+    animation: twinkle ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.1; }
+    50%      { opacity: 0.9; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1 class="title">Мы вместе</h1>
+  <p class="subtitle">и каждая секунда — счастье</p>
+
+  <div class="heart">❤️</div>
+
+  <div class="timer">
+    <div class="timer-block">
+      <div class="timer-value" id="days">0</div>
+      <div class="timer-label" id="days-label">дней</div>
+    </div>
+    <div class="timer-block">
+      <div class="timer-value" id="hours">0</div>
+      <div class="timer-label" id="hours-label">часов</div>
+    </div>
+    <div class="timer-block">
+      <div class="timer-value" id="minutes">0</div>
+      <div class="timer-label" id="minutes-label">минут</div>
+    </div>
+    <div class="timer-block">
+      <div class="timer-value" id="seconds">0</div>
+      <div class="timer-label" id="seconds-label">секунд</div>
+    </div>
+  </div>
+
+  <p class="since">с <span>11 июня 2026</span> года</p>
+</div>
+
+<script>
+  const START_DATE = new Date(2026, 5, 11, 0, 0, 0); // 11.06.2026
+
+  function plural(n, one, few, many) {
+    const mod10 = n % 10;
+    const mod100 = n % 100;
+    if (mod10 === 1 && mod100 !== 11) return one;
+    if (mod10 >= 2 && mod10 <= 4 && (mod100 < 10 || mod100 >= 20)) return few;
+    return many;
+  }
+
+  function updateTimer() {
+    const diff = Math.max(0, Date.now() - START_DATE.getTime());
+
+    const totalSeconds = Math.floor(diff / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    document.getElementById('days').textContent = days;
+    document.getElementById('hours').textContent = hours;
+    document.getElementById('minutes').textContent = minutes;
+    document.getElementById('seconds').textContent = seconds;
+
+    document.getElementById('days-label').textContent = plural(days, 'день', 'дня', 'дней');
+    document.getElementById('hours-label').textContent = plural(hours, 'час', 'часа', 'часов');
+    document.getElementById('minutes-label').textContent = plural(minutes, 'минута', 'минуты', 'минут');
+    document.getElementById('seconds-label').textContent = plural(seconds, 'секунда', 'секунды', 'секунд');
+  }
+
+  updateTimer();
+  setInterval(updateTimer, 1000);
+
+  // Stars
+  for (let i = 0; i < 60; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.left = Math.random() * 100 + 'vw';
+    star.style.top = Math.random() * 100 + 'vh';
+    star.style.animationDuration = (2 + Math.random() * 4) + 's';
+    star.style.animationDelay = Math.random() * 4 + 's';
+    document.body.appendChild(star);
+  }
+
+  // Falling hearts
+  const HEARTS = ['❤️', '💖', '💕', '💗', '💘'];
+  function spawnHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'floating-heart';
+    heart.textContent = HEARTS[Math.floor(Math.random() * HEARTS.length)];
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = (12 + Math.random() * 22) + 'px';
+    heart.style.animationDuration = (6 + Math.random() * 8) + 's';
+    document.body.appendChild(heart);
+    heart.addEventListener('animationend', () => heart.remove());
+  }
+  setInterval(spawnHeart, 800);
+  for (let i = 0; i < 5; i++) setTimeout(spawnHeart, i * 300);
+</script>
+
+</body>
+</html>
